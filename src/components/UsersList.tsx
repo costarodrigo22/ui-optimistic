@@ -3,15 +3,19 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/Avatar";
 import { Switch } from "./ui/Switch";
 import { Skeleton } from "./ui/Skeleton";
 import { useUpdateUser } from "@/app/hooks/useUpdateUser";
+import { toast } from "sonner";
+import { cn } from "@/lib/utils";
 
 export default function UsersList() {
   const { users, isLoading } = useUsers();
   const { updataUser } = useUpdateUser();
 
-  function handleBLockedChange(id: string, blocked: boolean) {
-    console.log({ blocked });
-
-    updataUser({ id, blocked });
+  async function handleBlockedChange(id: string, blocked: boolean) {
+    try {
+      await updataUser({ id, blocked });
+    } catch (error) {
+      toast.error("Ops! Algo deu errado ao atualizar o usuário!");
+    }
   }
 
   return (
@@ -27,7 +31,11 @@ export default function UsersList() {
       {users.map((user) => (
         <div
           key={user.id}
-          className="border p-4 rounded-md flex items-center justify-between"
+          className={cn(
+            "border p-4 rounded-md flex items-center justify-between",
+            user.status === "pending" && "opacity-50",
+            user.status === "error" && "border-destructive bg-destructive/20"
+          )}
         >
           <div className="flex items-center gap-4">
             <Avatar>
@@ -45,7 +53,8 @@ export default function UsersList() {
 
           <Switch
             checked={user.blocked}
-            onCheckedChange={(blocked) => handleBLockedChange(user.id, blocked)}
+            disabled={user.status === "pending" || user.status === "error"}
+            onCheckedChange={(blocked) => handleBlockedChange(user.id, blocked)}
           />
         </div>
       ))}

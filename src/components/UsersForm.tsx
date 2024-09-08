@@ -8,7 +8,7 @@ export default function UsersForm() {
   const [name, setName] = useState("");
   const [userName, setUserName] = useState("");
 
-  const { createUser, isLoading } = useCreateUsers();
+  const { createUser } = useCreateUsers();
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
