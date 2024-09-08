@@ -4,7 +4,7 @@ import UsersList from './components/UsersList';
 import UsersForm from './components/UsersForm';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from './lib/queryClient';
-import { Toaster } from '@/components/ui/Toaster';
+import { Toaster } from '@/components/ui/Toaster'
 
 function App() {
   return (
