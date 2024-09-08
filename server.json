@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": "456",
+      "userName": "maateusilva",
+      "name": "Mateus Silva",
+      "blocked": false
+    },
+    {
+      "id": "789",
+      "userName": "viieiiragui",
+      "name": "Guilherme Vieira",
+      "blocked": false
+    },
+    {
+      "id": "4c82",
+      "name": "Rodrigo Costa",
+      "blocked": false,
+      "userName": "costarodrigo22"
+    }
+  ]
+}
