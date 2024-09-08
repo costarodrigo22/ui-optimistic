@@ -1,0 +1,33 @@
+name: Optimist Updates CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+
+        with:
+          node-version: '18.x'
+          cach: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Linting
+        run: yarn ci:lint
+
+      - name: Typecheking
+        run: yarn typecheck
+
+      - name: Tests
+        run: yarn ci:tests

@@ -1,12 +1,12 @@
-import { useCreateUsers } from "@/app/hooks/useCreateUsers";
-import { Button } from "./ui/Button";
-import { Input } from "./ui/Input";
-import { useState } from "react";
-import { toast } from "sonner";
+import { useCreateUsers } from '@/app/hooks/useCreateUsers';
+import { Button } from './ui/Button';
+import { Input } from './ui/Input';
+import { useState } from 'react';
+import { toast } from 'sonner';
 
 export default function UsersForm() {
-  const [name, setName] = useState("");
-  const [userName, setUserName] = useState("");
+  const [name, setName] = useState('');
+  const [userName, setUserName] = useState('');
 
   const { createUser } = useCreateUsers();
 
@@ -14,12 +14,12 @@ export default function UsersForm() {
     event.preventDefault();
 
     try {
-      setName("");
-      setUserName("");
+      setName('');
+      setUserName('');
 
       await createUser({ name, userName, blocked: false });
     } catch (error) {
-      toast.error("Erro ao cadastrar usuário!!");
+      toast.error('Erro ao cadastrar usuário!!');
     }
   }
 
@@ -29,12 +29,12 @@ export default function UsersForm() {
         <Input
           placeholder="Nome do usuário"
           value={name}
-          onChange={(event) => setName(event.target.value)}
+          onChange={event => setName(event.target.value)}
         />
         <Input
           placeholder="@ do GitHub"
           value={userName}
-          onChange={(event) => setUserName(event.target.value)}
+          onChange={event => setUserName(event.target.value)}
         />
       </div>
 

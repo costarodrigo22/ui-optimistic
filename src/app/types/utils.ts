@@ -1,1 +1,1 @@
-export type withStatus<T> = T & { status: "pending" | "success" | "error" };
+export type withStatus<T> = T & { status: 'pending' | 'success' | 'error' };

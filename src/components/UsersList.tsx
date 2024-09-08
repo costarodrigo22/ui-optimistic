@@ -1,10 +1,10 @@
-import { useUsers } from "@/app/hooks/useUsers";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/Avatar";
-import { Switch } from "./ui/Switch";
-import { Skeleton } from "./ui/Skeleton";
-import { useUpdateUser } from "@/app/hooks/useUpdateUser";
-import { toast } from "sonner";
-import { cn } from "@/lib/utils";
+import { useUsers } from '@/app/hooks/useUsers';
+import { Avatar, AvatarFallback, AvatarImage } from './ui/Avatar';
+import { Switch } from './ui/Switch';
+import { Skeleton } from './ui/Skeleton';
+import { useUpdateUser } from '@/app/hooks/useUpdateUser';
+import { toast } from 'sonner';
+import { cn } from '@/lib/utils';
 
 export default function UsersList() {
   const { users, isLoading } = useUsers();
@@ -14,7 +14,7 @@ export default function UsersList() {
     try {
       await updataUser({ id, blocked });
     } catch (error) {
-      toast.error("Ops! Algo deu errado ao atualizar o usuário!");
+      toast.error('Ops! Algo deu errado ao atualizar o usuário!');
     }
   }
 
@@ -28,13 +28,13 @@ export default function UsersList() {
         </>
       )}
 
-      {users.map((user) => (
+      {users.map(user => (
         <div
           key={user.id}
           className={cn(
-            "border p-4 rounded-md flex items-center justify-between",
-            user.status === "pending" && "opacity-50",
-            user.status === "error" && "border-destructive bg-destructive/20"
+            'border p-4 rounded-md flex items-center justify-between',
+            user.status === 'pending' && 'opacity-50',
+            user.status === 'error' && 'border-destructive bg-destructive/20',
           )}
         >
           <div className="flex items-center gap-4">
@@ -53,8 +53,8 @@ export default function UsersList() {
 
           <Switch
             checked={user.blocked}
-            disabled={user.status === "pending" || user.status === "error"}
-            onCheckedChange={(blocked) => handleBlockedChange(user.id, blocked)}
+            disabled={user.status === 'pending' || user.status === 'error'}
+            onCheckedChange={blocked => handleBlockedChange(user.id, blocked)}
           />
         </div>
       ))}
