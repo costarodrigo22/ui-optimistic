@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "ci:lint": "prettier --check src",
     "typecheck": "tsc --noEmit",
-    "ci:tests": "echo 'Todos os testes passaram'",
+    "ci:tests": "vitest run",
     "test": "vitest run"
   },
   "dependencies": {
