@@ -19,13 +19,13 @@ export default function UsersList() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4" data-testid="users-list">
       {isLoading && (
-        <>
+        <div data-testid="loading">
           <Skeleton className="h-[74px]" />
           <Skeleton className="h-[74px]" />
           <Skeleton className="h-[74px]" />
-        </>
+        </div>
       )}
 
       {users.map(user => (

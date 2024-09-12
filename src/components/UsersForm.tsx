@@ -24,7 +24,11 @@ export default function UsersForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-muted/50 rounded-md p-4">
+    <form
+      onSubmit={handleSubmit}
+      className="bg-muted/50 rounded-md p-4"
+      data-testid="users-form"
+    >
       <div className="flex gap-3">
         <Input
           placeholder="Nome do usuário"
